@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Taco</title>
+
+    <!-- <link rel="stylesheet" type="text/css" href="week1hw.css"> -->
+    <!-- 왜 css파일로 분리하면 반영이 안되는걸까 -->
+    <style>
+        * {
+            justify-content: center;
+            align-items: center;
+            margin: auto;
+            font-family: 'Do Hyeon', sans-serif;
+
+        }
+
+        .carousel {
+            margin-top: 15px;
+            width: 300px;
+            height: 350px;
+        }
+
+        /* .pic {
+            background-color: black;
+            width: 300px;
+            height: auto;
+
+        } */
+
+        .details {
+            width: 500px;
+            font-family: 'East Sea Dokdo', cursive;
+        }
+
+        .description {
+            width: 500px;
+        }
+
+        .contents {
+            align-items: center;
+            width: 500px;
+            color: black;
+            text-align: center;
+            background-size: cover;
+            background-position: center;
+
+        }
+    </style>
+    
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <!-- font -->
+    <link href="https://fonts.googleapis.com/css2?family=East+Sea+Dokdo&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap" rel="stylesheet">
+
+    <!-- carousel -->
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> -->
+
+</head>
+
+
+<body>
+
+    <!-- carousel -->
+    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+        <ol class="carousel-indicators">
+            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+        </ol>
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="https://hips.hearstapps.com/vader-prod.s3.amazonaws.com/1577998505-unicorn-taco-holder-square-1577998470.jpg?crop=1xw:1xh;center,top&resize=768:*"
+                    class="d-block w-100" alt="0">
+            </div>
+            <div class="carousel-item">
+                <img src="https://images-na.ssl-images-amazon.com/images/I/614JNLDQN-L._AC_SX522_.jpg"
+                    class="d-block w-100" alt=""">
+          </div>
+  
+        </div>
+        <a class=" carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
+            </div>
+            <!-- 
+    <div class="pic">
+        <img width=300px height=auto
+            src="https://hips.hearstapps.com/vader-prod.s3.amazonaws.com/1577998505-unicorn-taco-holder-square-1577998470.jpg?crop=1xw:1xh;center,top&resize=768:*">
+ -->
+        </div>
+        <!-- 내용 -->
+        <div class="details">
+            <h3>유니콘 타코 홀더</h3>
+            <div>가격: 3,000원/개</div>
+        </div>
+        <div class="description">
+            타코를 거치할 수 있는 핑크색 유니콘 모양의 홀더입니다. 타코를 거치할 수 있는 핑크색 유니콘 모양의 홀더입니다.
+            타코를 거치할 수 있는 핑크색 유니콘 모양의 홀더입니다. 타코를 거치할 수 있는 핑크색 유니콘 모양의 홀더입니다.
+            타코를 거치할 수 있는 핑크색 유니콘 모양의 홀더입니다. 타코를 거치할 수 있는 핑크색 유니콘 모양의 홀더입니다.
+
+
+        </div>
+
+        <Br>
+    </div>
+
+    <div class="details">
+        <h3>주문하기</h3>
+    </div>
+
+
+    <div class="contents">
+        <div class="input-group flex-wrap">
+            <!-- 주문자성함 -->
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="basic-addon1">주문자 성함</span>
+
+                </div>
+                <input type="text" class="form-control" aria-label="Username" aria-describedby="basic-addon1">
+            </div>
+
+            <!-- 수량 -->
+            <div>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <label class="input-group-text" for="inputGroupSelect01">수량</label>
+                    </div>
+                    <input type="number" aria-label="Last name" class="form-control">
+
+                    </select>
+                </div>
+                <!-- 주소 -->
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">주소</span>
+                    </div>
+                    <input type="text" class="form-control" aria-label="Username" aria-describedby="basic-addon1">
+                </div>
+                <!-- 전화번호 -->
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">전화번호</span>
+                    </div>
+                    <input type="text" aria-label="First name" class="form-control">
+                    <input type="text" aria-label="Last name" class="form-control">
+                    <input type="text" aria-label="Last name" class="form-control">
+                </div>
+            </div>
+
+
+        </div>
+        <br>
+        <div>
+
+            <button type="button" class="btn btn-dark">주문하기</button>
+
+        </div>
+
+
+
+
+        <!-- Optional JavaScript -->
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+            integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+            crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            crossorigin="anonymous"></script>
+
+</body>
+
+
+</html>
