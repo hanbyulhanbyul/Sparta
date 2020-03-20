@@ -1,0 +1,75 @@
+<script>
+    function isCellPhone(p) {
+        var regExp = /^(01[016789]{1}|02|0[3-9]{1}[0-9]{1})[-][0-9]{3,4}[-][0-9]{4}$/;
+        return regExp.test(p);
+    }
+
+    function order() {
+        let name = $('#order_name').val();
+        let count = $('#order_count').val();
+        let address = $('#order_address').val();
+        let phone = $('#order_phone').val();
+
+        if (name == '') {
+            alert('이름을 입력해주세요')
+            $('#order_name').focus()
+            return
+        } else if (count == '') {
+            alert('수량을 입력해주세요')
+            $('#order_count').focus()
+            return
+        } else if (address == '') {
+            alert('주소를 입력해주세요')
+            $('#order_address').focus()
+            return
+        } else if (phone == '') {
+            alert('휴대폰번호를 입력해주세요')
+            $('#order_phone').focus()
+            return
+        } else if (!isCellPhone(phone)) {
+            alert('휴대폰번호 입력 형식이 틀립니다. \n 010-0000-0000으로 입력해주세요')
+            return
+        }
+
+        $.ajax({
+            type: "POST",
+            url: "/order",
+            data: { name_give: name, count_give: count, address_give: address, phone_give: phone },
+            success: function (response) {
+                if (response['result'] == 'success') {
+                    alert('주문 완료!');
+                    window.location.reload();
+                }
+            }
+        })
+    }
+
+
+
+    $(document).ready(function () {
+        $('#orders-box').html('');
+        listing();
+    });
+
+    function listing() {
+        $.ajax({
+            type: "GET",
+            url: "/order",
+            data: {},
+            success: function (response) {
+                if (response['result'] == 'success') {
+                    let orders = response['orders'];
+                    console.log(orders);
+                    for (let i = 0; i < orders.length; i++) {
+                        make_card(orders[i]['name'], orders[i]['count'], orders[i]['address'], orders[i]['phone'])
+                    }
+                } else {
+                    alert('기사를 받아오지
+    못했습니다'); } } }) } function make_card(name,count,address,phone) { let temp_html=' < tr >\
+                        <td>' +name+'</td>\
+                        <td>'+count+'</td>\
+                        <td>'+address+'</td>\
+                        <td>'+phone+'</td>\
+    </tr > ';
+    $('#orders-box').append(temp_html);
+                }

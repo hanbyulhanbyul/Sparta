@@ -6,9 +6,28 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
+
+    <!-- Webpage Title -->
+    <title>Hello, world!</title>
+
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <!-- JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+
+
 
     <title>나홀로 링크 메모장</title>
 
@@ -19,7 +38,8 @@
 
         .wrap {
             width: 900px;
-            margin: auto;        }
+            margin: auto;
+        }
 
         .myComment {
             color: blue;
@@ -32,10 +52,40 @@
             margin: 20px auto 20px auto;
             width: 500px;
             border-radius: 10px;
-            
+            display: none;
+
         }
     </style>
     <link href="https://fonts.googleapis.com/css?family=Gamja+Flower&display=swap" rel="stylesheet">
+
+
+    <script>
+        //0. 포스팅 박스가 닫힌 상태로 시작한다.
+        //1. 포스팅 박스 열기를 눌렀을 때
+        //2. 포스팅 박스가 열리고
+        //3. 글자도 -> "포스팅박스 닫기"로 바뀐다.
+
+        // function 이름 (소괄호) {중괄호}
+        function openClose() {
+            // alert("눌림!")
+
+            if ($("#post-box").css("display") === "none") {
+                // 이러면 감춰져있는 상태인것
+                $("#post-box").show();
+                $("#post-button").text("포스팅박스 닫기");
+            } else {
+                $("#post-box").hide();
+                $("#post-button").text("포스팅박스 열기");
+
+            }
+
+        }
+
+
+
+
+
+    </script>
 
 </head>
 
@@ -50,102 +100,101 @@
                 .</p>
             <hr class="my-4">
             <p class="lead">
-                <a class="btn btn-primary btn-lg" href="#" role="button">포스팅 박스 열기</a>
+                <a class="btn btn-primary btn-lg" id="post-button" href="#" role="button" onclick="openClose()">포스팅 박스
+                    열기</a>
             </p>
         </div>
-        <div class="postingbox">
+        <div class="postingbox" id="post-box">
             <form>
                 <div class="form-group">
                     <label for="exampleInputEmail1">아티클 URL</label>
                     <input class="form-control form-control-lg" type="text">
                 </div>
-                <div class="form-group">
-                    <label for="exampleInputPassword1"></label>
-                    <input class="form-control form-control-lg" type="text">
-                </div>
 
-                    <div class="form-group">
-                        <label for="exampleFormControlTextarea1">간단 코멘트</label>
-                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-                      </div>
+
+                <div class="form-group">
+                    <label for="exampleFormControlTextarea1">간단 코멘트</label>
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
                 </div>
                 <button type="submit" class="btn btn-primary">기사저장</button>
-
-
         </div>
 
-        <div class="card-columns">
-            <div class="card">
-                <img class="card-img-top"
-                    src="https://cdn.shopify.com/s/files/1/0037/0268/5745/articles/home-yourpets-hamster_400x.jpg?v=1564696396"
-                    alt="Card image cap">
-                <div class="card-body">
-                    <h5 class="card-title">
-                        <a href="#">여기 기사 제목이 들어가죠</a>
-                    </h5>
-                    <p class="card-text">기사의 요약 내용이 들어갑니다. 동해물과 백두산이 마르고 닳도록 하느님이 보우하사 우리나라만세 무궁화 삼천리 화려강산...
-                    </p>
-                    <p class="myComment">여기에 코멘트가 들어갑니다.</p>
-                </div>
-            </div>
 
-            <div class="card">
-                <img class="card-img-top"
-                    src="https://cdn.shopify.com/s/files/1/0037/0268/5745/articles/home-yourpets-hamster_400x.jpg?v=1564696396"
-                    alt="Card image cap">
-                <div class="card-body">
-                    <h5 class="card-title">Card title that wraps to a new line</h5>
-                    <p class="card-text">This is a longer card with supporting text below as a natural lead-in
-                        to
-                        additional content. This content is a little bit longer.</p>
-                </div>
+
+    </div>
+
+    <div class="card-columns">
+        <div class="card">
+            <img class="card-img-top"
+                src="https://cdn.shopify.com/s/files/1/0037/0268/5745/articles/home-yourpets-hamster_400x.jpg?v=1564696396"
+                alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title">
+                    <a href="#">여기 기사 제목이 들어가죠</a>
+                </h5>
+                <p class="card-text">기사의 요약 내용이 들어갑니다. 동해물과 백두산이 마르고 닳도록 하느님이 보우하사 우리나라만세 무궁화 삼천리 화려강산...
+                </p>
+                <p class="myComment">여기에 코멘트가 들어갑니다.</p>
             </div>
-            <div class="card">
-                <img class="card-img-top"
-                    src="https://cdn.shopify.com/s/files/1/0037/0268/5745/articles/home-yourpets-hamster_400x.jpg?v=1564696396"
-                    alt="Card image cap">
-                <div class="card-body">
-                    <h5 class="card-title">Card title that wraps to a new line</h5>
-                    <p class="card-text">This is a longer card with supporting text below as a natural lead-in
-                        to
-                        additional content. This content is a little bit longer.</p>
-                </div>
-            </div>
-            <div class="card">
-                <img class="card-img-top"
-                    src="https://cdn.shopify.com/s/files/1/0037/0268/5745/articles/home-yourpets-hamster_400x.jpg?v=1564696396"
-                    alt="Card image cap">
-                <div class="card-body">
-                    <h5 class="card-title">Card title that wraps to a new line</h5>
-                    <p class="card-text">This is a longer card with supporting text below as a natural lead-in
-                        to
-                        additional content. This content is a little bit longer.</p>
-                </div>
-            </div>
-            <div class="card">
-                <img class="card-img-top"
-                    src="https://cdn.shopify.com/s/files/1/0037/0268/5745/articles/home-yourpets-hamster_400x.jpg?v=1564696396"
-                    alt="Card image cap">
-                <div class="card-body">
-                    <h5 class="card-title">Card title that wraps to a new line</h5>
-                    <p class="card-text">This is a longer card with supporting text below as a natural lead-in
-                        to
-                        additional content. This content is a little bit longer.</p>
-                </div>
-            </div>
-            <div class="card">
-                <img class="card-img-top"
-                    src="https://cdn.shopify.com/s/files/1/0037/0268/5745/articles/home-yourpets-hamster_400x.jpg?v=1564696396"
-                    alt="Card image cap">
-                <div class="card-body">
-                    <h5 class="card-title">Card title that wraps to a new line</h5>
-                    <p class="card-text">This is a longer card with supporting text below as a natural lead-in
-                        to
-                        additional content. This content is a little bit longer.</p>
-                </div>
-            </div>
-            `
         </div>
+
+        <div class="card">
+            <img class="card-img-top"
+                src="https://cdn.shopify.com/s/files/1/0037/0268/5745/articles/home-yourpets-hamster_400x.jpg?v=1564696396"
+                alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title">Card title that wraps to a new line</h5>
+                <p class="card-text">This is a longer card with supporting text below as a natural lead-in
+                    to
+                    additional content. This content is a little bit longer.</p>
+            </div>
+        </div>
+        <div class="card">
+            <img class="card-img-top"
+                src="https://cdn.shopify.com/s/files/1/0037/0268/5745/articles/home-yourpets-hamster_400x.jpg?v=1564696396"
+                alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title">Card title that wraps to a new line</h5>
+                <p class="card-text">This is a longer card with supporting text below as a natural lead-in
+                    to
+                    additional content. This content is a little bit longer.</p>
+            </div>
+        </div>
+        <div class="card">
+            <img class="card-img-top"
+                src="https://cdn.shopify.com/s/files/1/0037/0268/5745/articles/home-yourpets-hamster_400x.jpg?v=1564696396"
+                alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title">Card title that wraps to a new line</h5>
+                <p class="card-text">This is a longer card with supporting text below as a natural lead-in
+                    to
+                    additional content. This content is a little bit longer.</p>
+            </div>
+        </div>
+        <div class="card">
+            <img class="card-img-top"
+                src="https://cdn.shopify.com/s/files/1/0037/0268/5745/articles/home-yourpets-hamster_400x.jpg?v=1564696396"
+                alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title">Card title that wraps to a new line</h5>
+                <p class="card-text">This is a longer card with supporting text below as a natural lead-in
+                    to
+                    additional content. This content is a little bit longer.</p>
+            </div>
+        </div>
+        <div class="card">
+            <img class="card-img-top"
+                src="https://cdn.shopify.com/s/files/1/0037/0268/5745/articles/home-yourpets-hamster_400x.jpg?v=1564696396"
+                alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title">Card title that wraps to a new line</h5>
+                <p class="card-text">This is a longer card with supporting text below as a natural lead-in
+                    to
+                    additional content. This content is a little bit longer.</p>
+            </div>
+        </div>
+        `
+    </div>
 </body>
 
 </html>

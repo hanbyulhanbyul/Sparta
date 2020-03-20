@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Taco</title>
+    <title>유니콘 타코</title>
 
     <!-- <link rel="stylesheet" type="text/css" href="week1hw.css"> -->
     <!-- 왜 css파일로 분리하면 반영이 안되는걸까 -->
@@ -49,7 +49,7 @@
 
         }
     </style>
-    
+
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
@@ -59,6 +59,50 @@
 
     <!-- carousel -->
     <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> -->
+
+    <!-- //javascript// -->
+    <script>
+        function submitOrder() {
+            let name = $("#orderName").val();
+            let quantity = $("orderQuantity").val();
+            let address = $("orderAddress").val();
+            let phone = $("orderPhone").val();
+        
+            if (name == "") {
+                alert("성함을 입력하세요!")
+                $("#orderName").focus();
+
+            } else if (quantity == "") {
+                alert("수량을 입력하세요!")
+                $("#orderQuantity").focus()
+                return
+            } else if (address == "") {
+                alert('주소를 입력하세요')
+                $("#orderAddress").focus()
+
+            } else if (phone == "") {
+                alert("휴대폰번호를 입력하세요!")
+                $('#orderPhone').focus()
+
+            } else if (!isCellPhone(phone)) {
+                alert('휴대폰번호 입력 형식이 틀립니다. \n 010-0000-0000으로 입력해주세요')
+
+            }
+
+        }
+
+
+
+
+
+
+
+
+
+    </script>
+
+
+
 
 </head>
 
@@ -126,43 +170,41 @@
                     <span class="input-group-text" id="basic-addon1">주문자 성함</span>
 
                 </div>
-                <input type="text" class="form-control" aria-label="Username" aria-describedby="basic-addon1">
+                <input id="orderName" type="text" class="form-control" aria-label="Username"
+                    aria-describedby="basic-addon1">
             </div>
-
             <!-- 수량 -->
-            <div>
-                <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                        <label class="input-group-text" for="inputGroupSelect01">수량</label>
-                    </div>
-                    <input type="number" aria-label="Last name" class="form-control">
-
-                    </select>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <label class="input-group-text" for="inputGroupSelect01">수량</label>
                 </div>
-                <!-- 주소 -->
-                <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text" id="basic-addon1">주소</span>
-                    </div>
-                    <input type="text" class="form-control" aria-label="Username" aria-describedby="basic-addon1">
-                </div>
-                <!-- 전화번호 -->
-                <div class="input-group">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text">전화번호</span>
-                    </div>
-                    <input type="text" aria-label="First name" class="form-control">
-                    <input type="text" aria-label="Last name" class="form-control">
-                    <input type="text" aria-label="Last name" class="form-control">
-                </div>
+                <input id="orderQuantity" type="number" aria-label="Last name" class="form-control">
             </div>
+            <!-- 주소 -->
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="basic-addon1">주소</span>
+                </div>
+                <input id="orderAddress" type="text" class="form-control" aria-label="Username"
+                    aria-describedby="basic-addon1">
+            </div>
+            <!-- 전화번호 -->
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">전화번호</span>
+                </div>
+                <input id="orderPhone" type="text" class="form-control">
 
-
+            </div>
         </div>
         <br>
         <div>
 
-            <button type="button" class="btn btn-dark">주문하기</button>
+            <button type="button" class="btn btn-dark" id="orderButton" onclick="submitOrder()" ;>
+                주문하기</button>
+            <br>
+            <Br>
+            <br>
 
         </div>
 
