@@ -67,38 +67,25 @@
             let quantity = $("orderQuantity").val();
             let address = $("orderAddress").val();
             let phone = $("orderPhone").val();
-        
-            if (name == "") {
-                alert("성함을 입력하세요!")
-                $("#orderName").focus();
 
-            } else if (quantity == "") {
+            if (name === "") {
+                alert("성함을 입력하세요!")
+                $("#orderName").focus()
+
+            } else if (quantity === "") {
                 alert("수량을 입력하세요!")
                 $("#orderQuantity").focus()
-                return
-            } else if (address == "") {
-                alert('주소를 입력하세요')
-                $("#orderAddress").focus()
 
-            } else if (phone == "") {
-                alert("휴대폰번호를 입력하세요!")
-                $('#orderPhone').focus()
+                } else if (address === "") {
+                    alert("주소를 입력하세요!")
+                    $("#orderAddress").focus()
 
-            } else if (!isCellPhone(phone)) {
-                alert('휴대폰번호 입력 형식이 틀립니다. \n 010-0000-0000으로 입력해주세요')
-
+                } else if (phone === "") {
+                    alert("휴대폰번호를 입력하세요!")
+                    $('#orderPhone').focus()
             }
-
         }
-
-
-
-
-
-
-
-
-
+    
     </script>
 
 
@@ -167,7 +154,7 @@
             <!-- 주문자성함 -->
             <div class="input-group mb-3">
                 <div class="input-group-prepend">
-                    <span class="input-group-text" id="basic-addon1">주문자 성함</span>
+                    <span class="input-group-text" id="basic-addon1">성함</span>
 
                 </div>
                 <input id="orderName" type="text" class="form-control" aria-label="Username"
