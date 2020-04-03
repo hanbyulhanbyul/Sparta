@@ -37,7 +37,7 @@
         }
 
         .wrap {
-            width: 900px;
+            width: auto;
             margin: auto;
         }
 
@@ -80,11 +80,49 @@
             }
 
         }
+    </script>
 
+    <script>
+        $(document).ready(function () {
+            listing();
+        });
 
+        function listing() {
+            $('#card-box').empty()
 
+            $.ajax({
+                type: "get",
+                url: "http://spartacodingclub.shop/post",
+                success: function (response) {
+                    let articles = response["articles"]
+                    for (let i = 0; i < articles.length; i++) {
+                        let article = articles[i]
 
+                        let comment = article["comment"]
+                        let desc = article["desc"]
+                        let image = article["image"]
+                        let title = article["title"]
+                        let url = article["url"]
+                        let html_temp = `<div class="card">
+                                        <img class="card-img-top"
+                                            src=${image}
+                                            alt="Card image cap" >
+                                        <div class="card-body">
+                                            <h5 class="card-title">
+                                                <a href=${url}>${title}</a>
+                                            </h5>
+                                            <p class="card-text">${desc}
+                                            </p>
+                                            <p class="myComment">${comment}</p>
+                                        </div>
+                                    </div>`
 
+                        $('#card-box').append(html_temp)
+                    }
+                }
+            });
+            console.log('화면 로딩 후 잘 실행되었습니다');
+        }
     </script>
 
 </head>
@@ -123,7 +161,7 @@
 
     </div>
 
-    <div class="card-columns">
+    <div class="card-columns" id="card-box">
         <div class="card">
             <img class="card-img-top"
                 src="https://cdn.shopify.com/s/files/1/0037/0268/5745/articles/home-yourpets-hamster_400x.jpg?v=1564696396"
@@ -193,7 +231,7 @@
                     additional content. This content is a little bit longer.</p>
             </div>
         </div>
-        `
+
     </div>
 </body>
 
