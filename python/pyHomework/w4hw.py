@@ -13,7 +13,7 @@ def home():
 
 ## API 역할을 하는 부분
 @app.route('/reviews', methods=['POST'])
-def write_review():
+def submitOrder():
     return jsonify({'result': 'success', 'msg': '주문, 성공적, 접수'})
 
     name = request.form['name_give']
