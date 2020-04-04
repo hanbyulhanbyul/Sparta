@@ -43,7 +43,6 @@ def submitOrder():
         'orders': orders
         })
 
-    return jsonify({'result': 'success', 'msg': 'get 주문 완료!'})
 
 
 if __name__ == '__main__':
