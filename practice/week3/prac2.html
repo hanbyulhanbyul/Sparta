@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <title>JQuery 연습하고 가기!</title>
+    <!-- JQuery를 import 합니다 -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <style type="text/css">
+        div.question-box {
+            margin: 10px 0 20px 0;
+        }
+
+        table {
+            border: 1px solid;
+            border-collapse: collapse;
+        }
+
+        td,
+        th {
+            padding: 10px;
+            border: 1px solid;
+        }
+    </style>
+
+    <script>
+        function q1() {
+            $.ajax({
+                type: "get",
+                url: "http://openapi.seoul.go.kr:8088/6d4d776b466c656533356a4b4b5872/json/bikeList/1/99",
+                success: function (response) {
+
+                    $('#names-q1').empty()
+                    // empty를 뒤에 쓰면 데이터를 다 가져오자마자 지워지는.. 반복문 앞에만 들어가면 됨. append 명령 바로 앞줄에 넣으면 한줄 불러오고 한줄 지우고...해서 결국엔 마지막 한줄만 출력됨.
+                    let bike_status = response["rentBikeStatus"]["row"]
+                    // ⬆️ 위 url에서 rentBikeStatus 안에 row 안에 값을 꺼내온다
+                    for (let i = 0; i < bike_status.length; i++) {
+                        let bike = bike_status[i]
+                        // ⬆️위에서 꺼내온 세부자료를 정의하고
+                        let station_name = bike['stationName']
+                        let parking = bike['rackTotCnt']
+                        let parked = bike['parkingBikeTotCnt']
+                        // console.log(station_name, parking, parked)
+
+                        let html_temp = `<tr>
+                        <td>${station_name} </td>
+                        <td>${parking}</td>
+                        <td>${parked}</td>
+                        </tr >`
+                        // console.log(html_temp)
+
+                        $("#names-q1").append(html_temp);
+
+                    }
+
+                }
+            });
+
+
+        }
+    </script>
+
+</head>
+
+<body>
+    <h1>JQuery+Ajax의 조합을 연습하자!</h1>
+
+    <hr />
+
+    <div class="question-box">
+        <h2>2. 서울시 OpenAPI(실시간 따릉기 현황)를 이용하기</h2>
+        <p>모든 위치의 따릉이 현황을 보여주세요</p>
+        <p>업데이트 버튼을 누를 때마다 지웠다 새로 씌여져야 합니다.</p>
+        <button onclick="q1()">업데이트</button>
+        <table>
+            <!-- t head, t body 해서 한 쌍으로 html에서 표를 그리는것 -->
+            <thead>
+                <tr>
+                    <td>거치대 위치</td>
+                    <td>거치대 수</td>
+                    <td>현재 거치된 따릉이 수</td>
+                </tr>
+            </thead>
+            <tbody id="names-q1">
+            </tbody>
+        </table>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <title>JQuery 연습하고 가기!</title>
+
+    <!-- JQuery를 import 합니다 -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <style type="text/css">
+        div.question-box {
+            margin: 10px 0 20px 0;
+        }
+    </style>
+
+    <script>
+        function q1() {
+            // 1. (onclick q1할 때) 예시 정보를 지운다: empty. 💙jqempty누르면 자동으로 나옴.
+            $('#names-q1').empty();
+            // 2. ajax를 통해 서울시 미세먼지 정보를 가져온다. : 💙jqajax누르면 저절로 입력됨. 
+            $.ajax({
+                type: "get",
+                url: "http://openapi.seoul.go.kr:8088/6d4d776b466c656533356a4b4b5872/json/RealtimeCityAir/1/99",
+                // data: "data",
+                // dataType: "dataType",
+                success: function (response) {
+                    // console.log(response["RealtimeCityAir"]["row"]);
+                    let mise_collection = response["RealtimeCityAir"]["row"]
+                    // 여러번 쓰기 힘드니까 일단 let 로 정의하고 끊어가기
+                    // mise_data는 배열(array). 어느 위치에 있는지 숫자로 들어감
+                    for (let i = 0; i < mise_collection.length; i++) {
+                        let gu_data = mise_collection[i]
+                        let gu_name = gu_data["MSRSTE_NM"]
+                        let gu_value = gu_data["IDEX_MVL"]
+
+                        console.log(gu_name, gu_value)
+                        // ⬆️이건 개발자들이 확인하기위해... 나중에는 지움.
+
+                        let html_to_insert = "<li>" + gu_name + " : " + gu_value + "</li>";
+                        console.log(html_to_insert)
+                        // 여기서 "<li>" 는 태그가 아니라 문자임. 
+                        //  ` : backtick, backquote ... `안녕하세요`라고 쓰면 
+                        // let backtick = `<li>${gu_name} : ${gu_value}</li>`; 로 써도 됨.
+                        // $는 jquery인데. 여기서 $는 jquery랑은 관련이 없고 그냥 약속임.
+                        $("#names-q1").append(html_to_insert);
+                        // ⬆️ 💙jq.append
+
+                    }
+
+                }
+            });
+            // 3. 가져온 정보를 이용해 html로 만들기
+
+
+
+
+
+        }
+    </script>
+
+</head>
+
+<body>
+    <h1>JQuery+Ajax의 조합을 연습하자!</h1>
+
+    <hr />
+
+    <div class="question-box">
+        <h2>1. 서울시 OpenAPI(실시간 미세먼지 상태)를 이용하기</h2>
+        <p>모든 구의 미세먼지를 표기해주세요</p>
+        <p>업데이트 버튼을 누를 때마다 지웠다 새로 씌여져야 합니다.</p>
+        <button onclick="q1()">업데이트</button>
+        <ul id="names-q1">
+            <li>중구 : 82</li>
+            <li>종로구 : 87</li>
+            <li>용산구 : 84</li>
+            <li>은평구 : 82</li>
+        </ul>
+    </div>
+</body>
+
+</html>

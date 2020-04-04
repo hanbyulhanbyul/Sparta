@@ -1,0 +1,59 @@
+<!-- 랜덤숫자 API -->
+
+<!doctype html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <title>JQuery 연습하고 가기!</title>
+    <!-- JQuery를 import 합니다 -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <style type="text/css">
+        div.question-box {
+            margin: 10px 0 20px 0;
+        }
+    </style>
+
+    <script>
+        function q1() {
+            let input_number = $("#magicnum").val()
+            let target_url = "http://numbersapi.com/" + input_number
+
+            if (input_number === "") {
+                alert("숫자를 입력해주세요!")
+            } else {
+                $.ajax({
+                    type: "get",
+                    url: target_url,
+                    // url: " http://numbersapi.com/42",
+                    // url: " http://numbersapi.com/#42" -> 이걸로하면 실제 그 url 페이지의 html이 불러와짐. get이 통하는..(?)
+                    // 지금까진 url을 고정된 string으로 썼는데, 변수로 바꿔주면 됨.
+               
+                    success: function (response) {
+                        $("#meaning").text(response)
+                        // 아래 html h5에 숨어있음
+                    }
+                });
+            }
+        }
+    </script>
+
+</head>
+
+<body>
+    <h1>JQuery+Ajax의 조합을 연습하자!</h1>
+
+    <hr />
+
+    <div class="question-box">
+        <h2>4. 랜덤 숫자 의미부여 API를 이용하기</h2>
+        <p>모든 숫자는 어떤 의미가 있습니다.</p>
+        <p>업데이트 버튼을 누를 때마다 지웠다 새로 씌여져야 합니다.</p>
+        <input type="number" id="magicnum">
+        <button onclick="q1()">이 숫자의 의미는?</button>
+        <h5 id="meaning"></h5>
+    </div>
+</body>
+
+</html>
