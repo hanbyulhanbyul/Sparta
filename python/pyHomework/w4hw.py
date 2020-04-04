@@ -12,43 +12,42 @@ def home():
 
 
 ## API 역할을 하는 부분
-@app.route('/reviews', methods=['POST'])
-def submitOrder():
-    return jsonify({'result': 'success', 'msg': '주문, 성공적, 접수'})
+@app.route('/orders', methods=['POST'])
+def submit_order():
+    name_receive = request.form['name_give']
+    quantity_receive = request.form['quantity_give']
+    address_receive = request.form['address_give']
+    phone_receive = request.form['phone_give']
 
-    name = request.form['name_give']
-    quantity = request.form['quantity_give']
-    address = request.form['address_give']
-    phone = request.form['phone_give']
+    print(name_receive)
+    print(quantity_receive)
+    print(address_receive)
+    print(phone_receive)
 
-    print(name)
-    print(quantity)
-    print(address)
-    print(phone)
-
-    db.orderList.insert_one({
+    orders = {
         'name': name,
         'quantity': quantity,
         'address': address,
         'phone': phone
-    })
+    }
+
+    db.orders.insert_one(order)
 
     return jsonify({'result': 'success', 'msg': '주문, 성공적, 접수'})
 
 
-# @app.route('/reviews', methods=['GET'])
-# def read_reviews():
-#     return jsonify({'result':'success', 'msg': '이 요청은 GET!'})
 
 
-@app.route('/reviews', methods=['GET'])
-def read_reviews():
-    order = list(db.orderList.find({}, {'_id': False}))
-    print(order)
+@app.route('/orders', methods=['GET'])
+def submit():
+  # return jsonify({'result': 'success', 'msg': '주문 완료!'})
+
+    orders = list(db.orders.find({}, {'_id': 0}))
+    print(orders)
     return jsonify({
         'result': 'success',
-        'msg': '주문 확인!',
-        'data': order
+        'msg': '주문 완료!',
+        'data': orders
     })
 
 
