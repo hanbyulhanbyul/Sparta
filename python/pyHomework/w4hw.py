@@ -12,44 +12,38 @@ def home():
 
 
 ## API 역할을 하는 부분
-@app.route('/orders', methods=['POST'])
-def submit_order():
-    name_receive = request.form['name_give']
-    quantity_receive = request.form['quantity_give']
-    address_receive = request.form['address_give']
-    phone_receive = request.form['phone_give']
+@app.route('/order', methods=['POST'])
+def post_order():
+    name_post = request.form['name_give']
+    quantity_post = request.form['quantity_give']
+    address_post = request.form['address_give']
+    phone_post = request.form['phone_give']
 
-    print(name_receive)
-    print(quantity_receive)
-    print(address_receive)
-    print(phone_receive)
+    db.orders.insert_one({
+        'name': name_post,
+        'quantity': quantity_post,
+        'address': address_post,
+        'phone': phone_post
+    })
 
-    orders = {
-        'name': name,
-        'quantity': quantity,
-        'address': address,
-        'phone': phone
-    }
-
-    db.orders.insert_one(order)
-
-    return jsonify({'result': 'success', 'msg': '주문, 성공적, 접수'})
+    return jsonify({
+        'result': 'success',
+        'msg': 'post 주문 접수 성공~!'})
 
 
 
 
-@app.route('/orders', methods=['GET'])
-def submit():
-  # return jsonify({'result': 'success', 'msg': '주문 완료!'})
-
+@app.route('/order', methods=['GET'])
+def submitOrder():
     orders = list(db.orders.find({}, {'_id': 0}))
-    print(orders)
+    # print(orders)
     return jsonify({
         'result': 'success',
         'msg': '주문 완료!',
-        'data': orders
-    })
+        'orders': orders
+        })
 
+    return jsonify({'result': 'success', 'msg': 'get 주문 완료!'})
 
 
 if __name__ == '__main__':
